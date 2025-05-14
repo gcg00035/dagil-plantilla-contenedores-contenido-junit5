@@ -19,7 +19,7 @@ public class Contenido {
     public Contenido() {
         this.id = 0;
         this.descripcion = "";
-        this.titulo="";
+        this.titulo = "";
     }
 
     /**
