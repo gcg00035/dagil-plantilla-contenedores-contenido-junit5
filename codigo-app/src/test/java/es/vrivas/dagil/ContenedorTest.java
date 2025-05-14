@@ -237,19 +237,19 @@ public class ContenedorTest {
         Contenedor contenedor = new Contenedor();
         Contenido objeto1 = new Contenido()
                 .setDescripcion("Descripción en toString_contenedor_no_vacio para objeto1")
-                .setId(1);
+                .setId(1).setTitulo("Hola");
         contenedor.add(objeto1);
         // Para un solo objeto
-        assertEquals("[\n{id: 1, descripcion: 'Descripción en toString_contenedor_no_vacio para objeto1'},\n]",
+        assertEquals("[\n{id: 1, Titulo: 'Hola', descripcion: 'Descripción en toString_contenedor_no_vacio para objeto1'},\n]",
                 contenedor.toString());
         Contenido objeto2 = new Contenido()
                 .setDescripcion("Descripción en toString_contenedor_no_vacio para objeto2")
-                .setId(2);
+                .setId(2).setTitulo("Hola");
         contenedor.add(objeto2);
         // Para dos objetos
         String cadenaJSONEsperada = "[\n"
-                + "{id: 1, descripcion: 'Descripción en toString_contenedor_no_vacio para objeto1'},\n"
-                + "{id: 2, descripcion: 'Descripción en toString_contenedor_no_vacio para objeto2'},\n"
+                + "{id: 1, Titulo: 'Hola', descripcion: 'Descripción en toString_contenedor_no_vacio para objeto1'},\n"
+                + "{id: 2, Titulo: 'Hola', descripcion: 'Descripción en toString_contenedor_no_vacio para objeto2'},\n"
                 + "]";
         assertEquals(cadenaJSONEsperada, contenedor.toString());
 
