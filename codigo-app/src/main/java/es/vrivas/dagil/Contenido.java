@@ -8,6 +8,8 @@ public class Contenido {
     /// Identificador.
     private int id;
 
+    private String titulo;
+
     /// Un campo de texto, como ejemplo de contenido.
     private String descripcion;
 
@@ -17,6 +19,7 @@ public class Contenido {
     public Contenido() {
         this.id = 0;
         this.descripcion = "";
+        this.titulo="";
     }
 
     /**
@@ -35,6 +38,8 @@ public class Contenido {
         return descripcion;
     }
 
+    
+
     /**
      * Establece el valor de id.
      * @param valor Valor para id.
@@ -46,6 +51,18 @@ public class Contenido {
             throw new IllegalArgumentException("El id del contenido no puede ser negativo");
         }
         this.id = valor;
+        return this;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public Contenido setTitulo(String titulo) {
+        if (titulo == null || titulo.isEmpty()) {
+            throw new IllegalArgumentException("el titulo no puede ser vacío");
+        }
+        this.titulo = titulo;
         return this;
     }
 
@@ -68,6 +85,8 @@ public class Contenido {
      * @return Cadena con los atributos del contenido en formato JSON.
      */
     public final String toString() {
-        return "{id: " + id + ", descripcion: '" + descripcion + "'}";
+        return "{id: " + id + ", Titulo: '"+ titulo+"', descripcion: '" + descripcion + "'}";
     }
+
+    
 }

@@ -67,6 +67,30 @@ public class ContenidoTest {
         objeto.setDescripcion("Descripción");
     }
 
+    
+    //---------------------------------------------------------------
+    // Tests para el método getTitulo
+    //---------------------------------------------------------------
+
+
+    @Test
+    public void getTitulo_inicia_vacia() {
+        // Comprueba que el titulo inicial es ""
+        assertEquals("", new Contenido().getTitulo());
+    }
+
+    /**
+     * Comprueba que el titulo se puede establecer a otro valor.
+     */
+    @Test
+    public void getTitulo_inicia_a_otro_valor() {
+        // Comprueba otro titulo
+        Contenido objeto = new Contenido();
+        objeto.setTitulo("Titulo");
+        assertEquals("Titulo", objeto.getTitulo());
+    }
+
+
     //---------------------------------------------------------------
     // Tests para el método setId
     //---------------------------------------------------------------
@@ -97,10 +121,58 @@ public class ContenidoTest {
     }
 
     //---------------------------------------------------------------
-    // Tests para el método setDescripcion
+    // Tests para el método setTitulo
     //---------------------------------------------------------------
 
     /**
+     * Comprueba que salta una excepción si se intenta establecer un titulo nulo o vacío.
+     */
+    @Test
+    public void setTitulo_excepciones() {
+        // Comprueba que no se puede establecer un titulo nulo
+        Contenido objeto = new Contenido();
+        try {
+            objeto.setTitulo(null);
+            fail();
+        } catch (IllegalArgumentException e) {
+            System.err.println("Excepción lanzada: " + e.getMessage() + " para titulo nulo");
+        }
+
+        // Comprueba que no se puede establecer un titulo vacío
+        try {
+            objeto.setTitulo("");
+            fail();
+        } catch (IllegalArgumentException e) {
+            System.err.println("Excepción lanzada: " + e.getMessage() + " para titulo vacío");
+        }
+    }
+
+    /**
+     * Comprueba que el titulo inicial es "".
+     */
+    @Test
+    public void setTitulo_titulo_inicial_es_nula() {
+        Contenido objeto = new Contenido();
+        assertEquals("", objeto.getTitulo());
+    }
+
+    /**
+     * Comprueba que establece un titulo y que devuelve el mismo objeto.
+     */
+    @Test
+    public void setTitulo_asigna_titulo_y_devuelve_this() {
+        // Comprueba que establece un titulo y que devuelve el mismo objeto
+        Contenido objeto = new Contenido();
+        assertSame(objeto, objeto.setTitulo("Titulo"));
+        assertEquals("Titulo", objeto.getTitulo());
+    }
+
+
+    
+    //---------------------------------------------------------------
+    // Tests para el método setDescripcion
+    //---------------------------------------------------------------
+/**
      * Comprueba que salta una excepción si se intenta establecer una descripción nula o vacía.
      */
     @Test
@@ -143,6 +215,8 @@ public class ContenidoTest {
         assertEquals("Descripción", objeto.getDescripcion());
     }
 
+
+
     //---------------------------------------------------------------
     // Tests para el método toString
     //---------------------------------------------------------------
@@ -152,7 +226,7 @@ public class ContenidoTest {
     @Test
     public void toString_constructor_por_defecto() {
         Contenido objeto = new Contenido();
-        assertEquals("{id: 0, descripcion: ''}", objeto.toString());
+        assertEquals("{id: 0, Titulo: '', descripcion: ''}", objeto.toString());
     }
 
     /**
@@ -164,7 +238,8 @@ public class ContenidoTest {
         Contenido objeto = new Contenido();
         objeto.setId(1);
         objeto.setDescripcion("Descripción para testToString");
-        assertEquals("{id: 1, descripcion: 'Descripción para testToString'}", objeto.toString());
+        objeto.setTitulo("Hola");
+        assertEquals("{id: 1, Titulo: 'Hola', descripcion: 'Descripción para testToString'}", objeto.toString());
     }
 
     /**
